@@ -1,10 +1,13 @@
-﻿using Caliburn.Micro;
+﻿using System;
+using System.Windows.Media.Imaging;
+using Caliburn.Micro;
 using Kontract.Interface;
+using Kuriimu2.Models;
 using Microsoft.Win32;
 
 namespace Kuriimu2.ViewModels
 {
-    public sealed class ShellViewModel : Conductor<IScreen>.Collection.OneActive
+    public sealed class ShellViewModel : Conductor<IScreen>.Collection.OneActive, ITabControl
     {
         #region Private
 
@@ -18,6 +21,34 @@ namespace Kuriimu2.ViewModels
             _kore = new Kore.Kore();
         }
 
+        #region ITabControl
+        public BindableCollection<ITabItem> TabCollection { get; set; } = new BindableCollection<ITabItem>();
+
+        public ITabItem SelectedTabItem { get; set; }
+
+        public void CloseTab()
+        {
+            SelectedTabItem.TabClose();
+            TabCollection.Remove(SelectedTabItem);
+        }
+
+        public bool CanCloseTab() => SelectedTabItem != null;
+
+        #endregion
+
+        #region Properties
+
+        #endregion
+
+        #region Methods
+
+        public void View_Loaded()
+        {
+           
+        }
+
+        #endregion
+
         public void OpenButton()
         {
             var ofd = new OpenFileDialog { Filter = _kore.FileFilters };
@@ -29,7 +60,7 @@ namespace Kuriimu2.ViewModels
                 switch (kf.Adapter)
                 {
                     case ITextAdapter txt2:
-                        ActivateItem(new TextEditor2ViewModel(kf));
+                        TabCollection.Add(TextEditor2ViewModel.Create("Test#1 *", new BitmapImage(new Uri("pack://application:,,,/Images/menu-power.png")), true, kf));
                         break;
                 }
             }
@@ -72,11 +103,6 @@ namespace Kuriimu2.ViewModels
         public void DebugButton()
         {
             _kore.Debug();
-        }
-
-        public void CloseTab(Screen tab)
-        {
-            tab.TryClose();
         }
     }
 }

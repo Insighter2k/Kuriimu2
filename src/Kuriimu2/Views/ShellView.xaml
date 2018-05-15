@@ -6,7 +6,8 @@
         xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
         d:DesignHeight="510" d:DesignWidth="680"
-        Background="#F0F0F0">
+        Background="#F0F0F0"
+        cal:Message.Attach="[Event Loaded]=[View_Loaded()]">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
@@ -50,16 +51,7 @@
             </ToolBar>
         </ToolBarTray>
 
-        <TabControl Name="Items">
-            <TabControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="pack://application:,,,/Images/text-editor-1.png" Height="16" Width="16" />
-                        <Label Content="{Binding DisplayName}" />
-                        <Button Content="X" cal:Message.Attach="CloseTab($dataContext)" Height="16" />
-                    </StackPanel>
-                </DataTemplate>
-            </TabControl.ItemTemplate>
-        </TabControl>
+        <TabControl ItemsSource="{Binding TabCollection}" SelectedItem="{Binding SelectedTabItem}" 
+                    ItemTemplate="{StaticResource TabItemDataTemplate}" ContentTemplate="{StaticResource TabItemContentDataTemplate}" />
     </DockPanel>
 </Window>

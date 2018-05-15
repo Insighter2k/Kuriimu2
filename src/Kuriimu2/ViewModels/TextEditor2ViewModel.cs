@@ -1,32 +1,62 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
+using System.Windows.Media;
 using Caliburn.Micro;
 using Kontract.Interface;
 using Kore;
+using Kuriimu2.Models;
 
 namespace Kuriimu2.ViewModels
 {
-    public sealed class TextEditor2ViewModel : Screen
+    public sealed class TextEditor2ViewModel : Screen, ITabItem
     {
+        protected TextEditor2ViewModel() { }
+
+        protected TextEditor2ViewModel(string tabHeader, ImageSource icon, bool isSelected, KoreFile kFile)
+        {
+            TabHeader = tabHeader;
+            TabIcon = icon;
+            IsSelected = isSelected;
+
+            KoreFile = kFile;
+
+            DisplayName = KoreFile.FileInfo.Name + (KoreFile.HasChanges ? "*" : string.Empty);
+            _adapter = KoreFile.Adapter as ITextAdapter;
+
+          
+
+            if (_adapter != null)
+                Entries = new ObservableCollection<TextEntry>(_adapter.Entries);
+
+            //SelectedEntry = Entries.First();
+
+        }
+
+        public static TextEditor2ViewModel Create(string tabHeader, ImageSource icon, bool isSelected, KoreFile kFile) => new TextEditor2ViewModel(tabHeader, icon, isSelected, kFile);
+
+        #region Properties
+
         private ITextAdapter _adapter;
         private TextEntry _selectedEntry;
 
         public KoreFile KoreFile;
         public ObservableCollection<TextEntry> Entries { get; }
 
-        public TextEditor2ViewModel(KoreFile koreFile)
+        #endregion
+
+        #region ITabItem
+
+        public ImageSource TabIcon { get; set; }
+        public string TabHeader { get; set; }
+        public bool IsSelected { get; set; }
+        public void TabClose()
         {
-            KoreFile = koreFile;
-
-            DisplayName = KoreFile.FileInfo.Name + (KoreFile.HasChanges ? "*" : string.Empty);
-            _adapter = KoreFile.Adapter as ITextAdapter;
-
-            if (_adapter != null)
-                Entries = new ObservableCollection<TextEntry>(_adapter.Entries);
-
-            //SelectedEntry = Entries.First();
+            this.TryClose();
         }
+
+        #endregion
 
         //public TextEntry SelectedEntry
         //{
