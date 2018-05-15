@@ -52,6 +52,7 @@
         </ToolBarTray>
 
         <TabControl ItemsSource="{Binding TabCollection}" SelectedItem="{Binding SelectedTabItem}" 
-                    ItemTemplate="{StaticResource TabItemDataTemplate}" ContentTemplate="{StaticResource TabItemContentDataTemplate}" />
+                    ItemTemplate="{StaticResource TabItemDataTemplate}" ContentTemplate="{StaticResource TabItemContentDataTemplate}" 
+                     />
     </DockPanel>
 </Window>

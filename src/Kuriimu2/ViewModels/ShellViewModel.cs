@@ -1,12 +1,15 @@
 ﻿using System;
+using System.ComponentModel.Composition;
 using System.Windows.Media.Imaging;
 using Caliburn.Micro;
 using Kontract.Interface;
-using Kuriimu2.Models;
+using Kore.Models;
+using Kore.ViewModels;
 using Microsoft.Win32;
 
 namespace Kuriimu2.ViewModels
 {
+    [Export]
     public sealed class ShellViewModel : Conductor<IScreen>.Collection.OneActive, ITabControl
     {
         #region Private
@@ -44,7 +47,7 @@ namespace Kuriimu2.ViewModels
 
         public void View_Loaded()
         {
-           
+           TabCollection.Add(TextEditor3ViewModel.Create("Tester3", null, true, null));
         }
 
         #endregion

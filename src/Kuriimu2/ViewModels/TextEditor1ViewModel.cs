@@ -4,7 +4,7 @@ using System.Windows.Media;
 using Caliburn.Micro;
 using Kontract.Interface;
 using Kore;
-using Kuriimu2.Models;
+using Kore.Models;
 
 namespace Kuriimu2.ViewModels
 {
