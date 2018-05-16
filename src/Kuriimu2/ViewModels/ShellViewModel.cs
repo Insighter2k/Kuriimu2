@@ -1,16 +1,19 @@
 ﻿using System;
 using System.ComponentModel.Composition;
+using System.Linq;
 using System.Windows.Media.Imaging;
 using Caliburn.Micro;
 using Kontract.Interface;
 using Kore.Models;
-using Kore.ViewModels;
+using Kuriimu2.Models;
 using Microsoft.Win32;
+using SamplePluginA.ViewModels;
+using SamplePluginB.ViewModels;
 
 namespace Kuriimu2.ViewModels
 {
-    [Export]
-    public sealed class ShellViewModel : Conductor<IScreen>.Collection.OneActive, ITabControl
+    [Export(typeof(IShell))]
+    public sealed class ShellViewModel : Conductor<IScreen>.Collection.OneActive, IShell, ITabControl
     {
         #region Private
 
@@ -47,7 +50,7 @@ namespace Kuriimu2.ViewModels
 
         public void View_Loaded()
         {
-           TabCollection.Add(TextEditor3ViewModel.Create("Tester3", null, true, null));
+            
         }
 
         #endregion
@@ -63,7 +66,10 @@ namespace Kuriimu2.ViewModels
                 switch (kf.Adapter)
                 {
                     case ITextAdapter txt2:
-                        TabCollection.Add(TextEditor2ViewModel.Create("Test#1 *", new BitmapImage(new Uri("pack://application:,,,/Images/menu-power.png")), true, kf));
+                        TabCollection.Add(TextEditor2ViewModel.Create("Test#1 *",
+                           new BitmapImage(new Uri("pack://application:,,,/Images/menu-power.png")), true, kf));
+                        TabCollection.Add(TextEditor3ViewModel.Create("Tester3", new BitmapImage(new Uri("pack://application:,,,/Images/menu-power.png")), true, kf));
+                        TabCollection.Add(TextEditor4ViewModel.Create("Tester4", new BitmapImage(new Uri("pack://application:,,,/Images/menu-power.png")), true, kf));
                         break;
                 }
             }

@@ -86,6 +86,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Models\IShell.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -193,6 +194,14 @@
     <Resource Include="Images\text-editor-2.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SamplePluginA\SamplePluginA.csproj">
+      <Project>{96e516cf-5bdb-4395-bca6-392b25c0cf44}</Project>
+      <Name>SamplePluginA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SamplePluginB\SamplePluginB.csproj">
+      <Project>{b2df5d34-8542-400d-88f0-53d8f8e4d895}</Project>
+      <Name>SamplePluginB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kontract\Kontract.csproj">
       <Project>{A43ECC92-DC90-4F79-9871-49E02A11ADAD}</Project>
       <Name>Kontract</Name>

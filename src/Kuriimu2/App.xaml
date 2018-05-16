@@ -3,10 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Kuriimu2"
              xmlns:cal="http://www.caliburnproject.org"
-             xmlns:views="clr-namespace:Kuriimu2.Views"
-             xmlns:viewModels="clr-namespace:Kuriimu2.ViewModels"
-             xmlns:koreViews="clr-namespace:Kore.Views;assembly=Kore"
-             xmlns:koreViewModels="clr-namespace:Kore.ViewModels;assembly=Kore"
              >
     <Application.Resources>
         <ResourceDictionary>
@@ -17,36 +13,23 @@
                 <ResourceDictionary Source="Styles/Base.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-           
+
             <Style TargetType="TabItem">
                 <Setter Property="IsSelected" Value="{Binding IsSelected}" />
             </Style>
 
-            
             <!--TabItem DataTemplates Begin-->
 
             <DataTemplate x:Key="TabItemDataTemplate" DataType="{x:Type TabItem}">
-                <StackPanel Orientation="Horizontal" cal:View.Model="{Binding}">
+                <StackPanel Orientation="Horizontal" cal:View.Model="{Binding Content}">
                     <Image Source="{Binding TabIcon}" Height="16" Width="16" />
                     <Label Content="{Binding TabHeader}" />
                     <Button Content="X" cal:Message.Attach="[Event Click]=[CloseTab()]" Height="16" />
                 </StackPanel>
             </DataTemplate>
-            
-            <DataTemplate x:Key="TabItemContentDataTemplate" DataType="{x:Type TabItem}">
+
+            <DataTemplate x:Shared="False" x:Key="TabItemContentDataTemplate" DataType="{x:Type TabItem}">
                 <ContentControl cal:View.Model="{Binding}" /> 
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModels:TextEditor1ViewModel}">
-                <views:TextEditor1View/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModels:TextEditor2ViewModel}">
-                <views:TextEditor2View/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type koreViewModels:TextEditor3ViewModel}">
-                <koreViews:TextEditor3View/>
             </DataTemplate>
 
             <!--TabItem DataTemplates End-->

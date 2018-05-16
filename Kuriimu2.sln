@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kore", "src\Kore\Kore.cspro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanvas", "src\Kanvas\Kanvas.csproj", "{810CEFCF-6900-43FF-8939-EF2D52236882}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplePluginA", "SamplePluginA\SamplePluginA.csproj", "{96E516CF-5BDB-4395-BCA6-392B25C0CF44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplePluginB", "SamplePluginB\SamplePluginB.csproj", "{B2DF5D34-8542-400D-88F0-53D8F8E4D895}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,14 @@ Global
 		{810CEFCF-6900-43FF-8939-EF2D52236882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{810CEFCF-6900-43FF-8939-EF2D52236882}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{810CEFCF-6900-43FF-8939-EF2D52236882}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96E516CF-5BDB-4395-BCA6-392B25C0CF44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96E516CF-5BDB-4395-BCA6-392B25C0CF44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96E516CF-5BDB-4395-BCA6-392B25C0CF44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96E516CF-5BDB-4395-BCA6-392B25C0CF44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2DF5D34-8542-400D-88F0-53D8F8E4D895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2DF5D34-8542-400D-88F0-53D8F8E4D895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2DF5D34-8542-400D-88F0-53D8F8E4D895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2DF5D34-8542-400D-88F0-53D8F8E4D895}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
